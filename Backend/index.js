@@ -2,12 +2,13 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
+require("dotenv").config();
 
-const mongoURI = "mongodb://localhost:27017/inotebookDB";
+const mongoURI = process.env.MONGO_URI;
 mongoose.connect(mongoURI).then(() => console.log("MongoDB Connected succesfully"));
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT;
 
 app.use(cors());
 // This middleware is used, whenever we want to use req.body in our application.
